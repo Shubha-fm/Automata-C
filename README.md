@@ -1,8 +1,8 @@
-# Automata-C: 60 Finite Automata Programs in C
+# Automata-C: 70 Finite Automata Programs in C
 
-A collection of **60 standalone C11 programs** demonstrating deterministic finite automata (DFA) and regular languages over the binary alphabet **{0, 1}**. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
+A collection of **70 standalone C11 programs** demonstrating deterministic finite automata (DFA) and regular languages over the binary alphabet **{0, 1}**. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
 
-> **Scope:** All 60 implementations are DFAs. This repository does not currently implement general NFA/ε-NFA simulation, DFA minimization, or regex-to-automata conversion.
+> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. General DFA minimization and regex-to-automata conversion are not included.
 
 ## Requirements
 
@@ -20,6 +20,7 @@ make
 make test
 python3 tests/test_programs_21_50.py
 python3 tests/test_programs_51_60.py
+python3 tests/test_programs_61_70.py
 ```
 
 Expected result for `./bin/03_ends_01 1101`: `ACCEPT`.
@@ -125,15 +126,31 @@ gcc -std=c11 -Wall -Wextra -Wpedantic programs/58_contains_00_and_11.c -o automa
 | 59 | [`59_even_ones_ends_01.c`](programs/59_even_ones_ends_01.c) | even ones ends 01 |
 | 60 | [`60_no_more_than_two_ones.c`](programs/60_no_more_than_two_ones.c) | no more than two ones |
 
+### NFA examples and additional regular languages (61–70)
+
+| # | C source | Language / demonstration |
+|---:|---|---|
+| 61 | [`61_nfa_contains_01.c`](programs/61_nfa_contains_01.c) | NFA simulation: contains 01 |
+| 62 | [`62_epsilon_nfa_ends_10.c`](programs/62_epsilon_nfa_ends_10.c) | Epsilon-NFA simulation: ends in 10 |
+| 63 | [`63_dfa_complement_contains_00.c`](programs/63_dfa_complement_contains_00.c) | DFA complement: strings avoiding 00 |
+| 64 | [`64_dfa_union_ends_01_or_10.c`](programs/64_dfa_union_ends_01_or_10.c) | DFA union: ends 01 or 10 |
+| 65 | [`65_dfa_intersection_even_zeros_and_ones.c`](programs/65_dfa_intersection_even_zeros_and_ones.c) | DFA intersection: even zeros and ones |
+| 66 | [`66_dfa_difference_contains_11_not_00.c`](programs/66_dfa_difference_contains_11_not_00.c) | DFA difference: contains 11 but not 00 |
+| 67 | [`67_dfa_symmetric_difference_parities.c`](programs/67_dfa_symmetric_difference_parities.c) | DFA symmetric difference: odd zeros XOR odd ones |
+| 68 | [`68_reversed_language_nfa.c`](programs/68_reversed_language_nfa.c) | NFA for reversed language of strings ending 01 (starts 10) |
+| 69 | [`69_dfa_product_contains_00_and_ends_1.c`](programs/69_dfa_product_contains_00_and_ends_1.c) | Product DFA: contains 00 and ends with 1 |
+| 70 | [`70_dfa_exactly_one_01.c`](programs/70_dfa_exactly_one_01.c) | DFA counting exactly one occurrence of 01 |
+
 ## Project structure
 
 ```text
 Automata-C/
-├── programs/                   # 60 independent C source files
+├── programs/                   # 70 independent C source files
 ├── tests/
 │   ├── run_tests.py            # Tests for programs 01–20
 │   ├── test_programs_21_50.py  # Tests for programs 21–50
 │   └── test_programs_51_60.py  # Tests for programs 51–60
+│   └── test_programs_61_70.py # Tests for programs 61–70
 ├── Makefile
 ├── README.md
 ├── README_30_NEW_PROGRAMS.md
@@ -152,7 +169,7 @@ python3 tests/test_programs_51_60.py
 make clean
 ```
 
-The extra Python scripts are separate test suites; **`make test` alone does not run all three**. No compiled executables are committed.
+The extra Python scripts are separate test suites; **`make test` alone does not run all four**. No compiled executables are committed.
 
 ## How the automata work
 
@@ -162,6 +179,7 @@ Each program defines a transition table, a starting state, and a set of acceptin
 
 - [Programs 21–50](README_30_NEW_PROGRAMS.md)
 - [Programs 51–60](README_10_NEW_PROGRAMS.md)
+- [Programs 61–70](README_61_70.md)
 
 ## License
 
