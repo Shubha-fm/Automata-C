@@ -1,8 +1,8 @@
-# Automata-C: 70 Finite Automata Programs in C
+# Automata-C: 80 Automata Programs in C
 
-A collection of **70 standalone C11 programs** demonstrating deterministic finite automata (DFA) and regular languages over the binary alphabet **{0, 1}**. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
+A collection of **80 standalone C11 programs** demonstrating deterministic finite automata (DFA) and regular languages over the binary alphabet **{0, 1}**. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
 
-> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. General DFA minimization and regex-to-automata conversion are not included.
+> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–80 demonstrate fixed-size automata algorithms. General DFA minimization and regex-to-automata conversion are not included.
 
 ## Requirements
 
@@ -21,11 +21,12 @@ make test
 python3 tests/test_programs_21_50.py
 python3 tests/test_programs_51_60.py
 python3 tests/test_programs_61_70.py
+python3 tests/test_programs_71_80.py
 ```
 
 Expected result for `./bin/03_ends_01 1101`: `ACCEPT`.
 
-Each program takes one optional binary-string argument. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string is supported as a command-line argument (`""`), and acceptance depends on the individual DFA.
+Programs 01–70 take one optional binary-string argument. Programs 71–80 run built-in algorithm demonstrations without arguments. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string is supported as a command-line argument (`""`), and acceptance depends on the individual DFA.
 
 Compile a single program without Make:
 
@@ -141,16 +142,32 @@ gcc -std=c11 -Wall -Wextra -Wpedantic programs/58_contains_00_and_11.c -o automa
 | 69 | [`69_dfa_product_contains_00_and_ends_1.c`](programs/69_dfa_product_contains_00_and_ends_1.c) | Product DFA: contains 00 and ends with 1 |
 | 70 | [`70_dfa_exactly_one_01.c`](programs/70_dfa_exactly_one_01.c) | DFA counting exactly one occurrence of 01 |
 
+### Automata algorithms (71–80)
+
+| # | Source | Demonstration |
+|---:|---|---|
+| 71 | [`71_epsilon_closure.c`](programs/71_epsilon_closure.c) | Compute epsilon closure of NFA state sets |
+| 72 | [`72_nfa_subset_construction.c`](programs/72_nfa_subset_construction.c) | Convert sample NFA to DFA by subset construction |
+| 73 | [`73_dfa_reachable_states.c`](programs/73_dfa_reachable_states.c) | Find reachable DFA states with BFS |
+| 74 | [`74_dfa_minimization.c`](programs/74_dfa_minimization.c) | Minimize a sample DFA with partition refinement |
+| 75 | [`75_dfa_equivalence.c`](programs/75_dfa_equivalence.c) | Check sample DFA equivalence by product-state BFS |
+| 76 | [`76_dfa_complement_table.c`](programs/76_dfa_complement_table.c) | Construct complement accepting states |
+| 77 | [`77_dfa_product_intersection.c`](programs/77_dfa_product_intersection.c) | Construct product automaton for even zeros AND even ones |
+| 78 | [`78_dfa_shortest_word.c`](programs/78_dfa_shortest_word.c) | Find shortest accepted word using BFS |
+| 79 | [`79_dfa_enumerate_length_3.c`](programs/79_dfa_enumerate_length_3.c) | Enumerate accepted binary strings of length three |
+| 80 | [`80_dfa_distinguishable_pairs.c`](programs/80_dfa_distinguishable_pairs.c) | Table-filling distinguishability for DFA states |
+
 ## Project structure
 
 ```text
 Automata-C/
-├── programs/                   # 70 independent C source files
+├── programs/                   # 80 independent C source files
 ├── tests/
 │   ├── run_tests.py            # Tests for programs 01–20
 │   ├── test_programs_21_50.py  # Tests for programs 21–50
 │   └── test_programs_51_60.py  # Tests for programs 51–60
-│   └── test_programs_61_70.py # Tests for programs 61–70
+│   ├── test_programs_61_70.py # Tests for programs 61–70
+│   └── test_programs_71_80.py # Tests for programs 71–80
 ├── Makefile
 ├── README.md
 ├── README_30_NEW_PROGRAMS.md
@@ -169,17 +186,18 @@ python3 tests/test_programs_51_60.py
 make clean
 ```
 
-The extra Python scripts are separate test suites; **`make test` alone does not run all four**. No compiled executables are committed.
+The extra Python scripts are separate test suites; **`make test` alone does not run all five**. No compiled executables are committed.
 
 ## How the automata work
 
-Each program defines a transition table, a starting state, and a set of accepting states. Starting at state 0, the DFA reads each binary digit, follows the corresponding transition, and accepts only if the final state is accepting. Some programs track substrings; others track parity, remainders, counts, or combinations of conditions.
+The recognizer programs define a transition table, a starting state, and a set of accepting states. Starting at state 0, the DFA reads each binary digit, follows the corresponding transition, and accepts only if the final state is accepting. Some programs track substrings; others track parity, remainders, counts, or combinations of conditions.
 
 ## Further reading
 
 - [Programs 21–50](README_30_NEW_PROGRAMS.md)
 - [Programs 51–60](README_10_NEW_PROGRAMS.md)
 - [Programs 61–70](README_61_70.md)
+- [Programs 71–80](README_71_80.md)
 
 ## License
 
