@@ -1,8 +1,8 @@
-# Automata-C: 90 Automata Programs in C
+# Automata-C: 100 Automata Programs in C
 
-A collection of **90 standalone C11 programs** demonstrating deterministic finite automata (DFA) and regular languages over the binary alphabet **{0, 1}**. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
+A collection of **100 standalone C11 programs** demonstrating deterministic finite automata (DFA) and regular languages over the binary alphabet **{0, 1}**. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
 
-> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. General DFA minimization and regex-to-automata conversion are not included.
+> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–100 introduce pushdown-language recognizers, a fixed grammar example, regex-language recognition, and DFAs for other alphabets. These examples are educational; general-purpose automata construction and parsing libraries are not included.
 
 ## Requirements
 
@@ -23,11 +23,12 @@ python3 tests/test_programs_51_60.py
 python3 tests/test_programs_61_70.py
 python3 tests/test_programs_71_80.py
 python3 tests/test_programs_81_90.py
+python3 tests/test_programs_91_100.py
 ```
 
 Expected result for `./bin/03_ends_01 1101`: `ACCEPT`.
 
-Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string is supported as a command-line argument (`""`), and acceptance depends on the individual DFA.
+Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Programs 91–100 accept a string argument, using the alphabet described for each program. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string is supported as a command-line argument (`""`), and acceptance depends on the individual DFA.
 
 Compile a single program without Make:
 
@@ -173,18 +174,34 @@ gcc -std=c11 -Wall -Wextra -Wpedantic programs/58_contains_00_and_11.c -o automa
 | 89 | [`89_moore_machine.c`](programs/89_moore_machine.c) | Generate Moore machine outputs for 10110 |
 | 90 | [`90_mealy_machine.c`](programs/90_mealy_machine.c) | Generate Mealy machine outputs for 10110 |
 
+### Pushdown-language and other-alphabet examples (91–100)
+
+| # | Source | Demonstration |
+|---:|---|---|
+| 91 | [`91_pda_balanced_parentheses.c`](programs/91_pda_balanced_parentheses.c) | Pushdown automaton for balanced parentheses |
+| 92 | [`92_pda_anbn.c`](programs/92_pda_anbn.c) | Pushdown recognition of a^n b^n (n>=0) |
+| 93 | [`93_pda_palindrome_with_separator.c`](programs/93_pda_palindrome_with_separator.c) | Pushdown recognition of w#w^R |
+| 94 | [`94_cfg_cyk_ab.c`](programs/94_cfg_cyk_ab.c) | CYK-style membership for grammar S -> AB, A -> a, B -> b |
+| 95 | [`95_regex_thompson_01star.c`](programs/95_regex_thompson_01star.c) | Recognition of regex 0(1)* (fixed Thompson-language example) |
+| 96 | [`96_dfa_decimal_mod_3.c`](programs/96_dfa_decimal_mod_3.c) | Decimal digit DFA modulo 3 |
+| 97 | [`97_dfa_hex_mod_5.c`](programs/97_dfa_hex_mod_5.c) | Hexadecimal digit DFA modulo 5 |
+| 98 | [`98_dfa_ternary_mod_4.c`](programs/98_dfa_ternary_mod_4.c) | Ternary digit DFA modulo 4 |
+| 99 | [`99_dfa_identifier.c`](programs/99_dfa_identifier.c) | DFA for ASCII identifiers [A-Za-z_][A-Za-z0-9_]* |
+| 100 | [`100_dfa_binary_multiple_11.c`](programs/100_dfa_binary_multiple_11.c) | Binary-number DFA modulo 11 |
+
 ## Project structure
 
 ```text
 Automata-C/
-├── programs/                   # 90 independent C source files
+├── programs/                   # 100 independent C source files
 ├── tests/
 │   ├── run_tests.py            # Tests for programs 01–20
 │   ├── test_programs_21_50.py  # Tests for programs 21–50
 │   └── test_programs_51_60.py  # Tests for programs 51–60
 │   ├── test_programs_61_70.py # Tests for programs 61–70
 │   ├── test_programs_71_80.py # Tests for programs 71–80
-│   └── test_programs_81_90.py # Tests for programs 81–90
+│   ├── test_programs_81_90.py # Tests for programs 81–90
+│   └── test_programs_91_100.py # Tests for programs 91–100
 ├── Makefile
 ├── README.md
 ├── README_30_NEW_PROGRAMS.md
@@ -203,7 +220,7 @@ python3 tests/test_programs_51_60.py
 make clean
 ```
 
-The extra Python scripts are separate test suites; **`make test` alone does not run all six**. No compiled executables are committed.
+The extra Python scripts are separate test suites; **`make test` alone does not run all seven**. No compiled executables are committed.
 
 ## How the automata work
 
@@ -216,6 +233,7 @@ The recognizer programs define a transition table, a starting state, and a set o
 - [Programs 61–70](README_61_70.md)
 - [Programs 71–80](README_71_80.md)
 - [Programs 81–90](README_81_90.md)
+- [Programs 91–100](README_91_100.md)
 
 ## License
 
