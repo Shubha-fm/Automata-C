@@ -1,6 +1,6 @@
 # Automata-C: 100 Automata Programs in C
 
-A collection of **100 standalone C11 programs** demonstrating deterministic finite automata (DFA) and regular languages over the binary alphabet **{0, 1}**. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
+A collection of **100 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–100 include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
 
 > **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–100 introduce pushdown-language recognizers, a fixed grammar example, regex-language recognition, and DFAs for other alphabets. These examples are educational; general-purpose automata construction and parsing libraries are not included.
 
@@ -28,7 +28,7 @@ python3 tests/test_programs_91_100.py
 
 Expected result for `./bin/03_ends_01 1101`: `ACCEPT`.
 
-Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Programs 91–100 accept a string argument, using the alphabet described for each program. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string is supported as a command-line argument (`""`), and acceptance depends on the individual DFA.
+Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Programs 91–100 accept a string argument, using the alphabet described for each program. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string can be supplied as a command-line argument (`""`), and acceptance depends on the individual language. The earlier recognizers use binary alphabets, whereas programs 91–100 use the alphabets specified in their descriptions.
 
 Compile a single program without Make:
 
