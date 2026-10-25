@@ -1,8 +1,8 @@
-# Automata-C: 80 Automata Programs in C
+# Automata-C: 90 Automata Programs in C
 
-A collection of **80 standalone C11 programs** demonstrating deterministic finite automata (DFA) and regular languages over the binary alphabet **{0, 1}**. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
+A collection of **90 standalone C11 programs** demonstrating deterministic finite automata (DFA) and regular languages over the binary alphabet **{0, 1}**. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
 
-> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–80 demonstrate fixed-size automata algorithms. General DFA minimization and regex-to-automata conversion are not included.
+> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. General DFA minimization and regex-to-automata conversion are not included.
 
 ## Requirements
 
@@ -22,11 +22,12 @@ python3 tests/test_programs_21_50.py
 python3 tests/test_programs_51_60.py
 python3 tests/test_programs_61_70.py
 python3 tests/test_programs_71_80.py
+python3 tests/test_programs_81_90.py
 ```
 
 Expected result for `./bin/03_ends_01 1101`: `ACCEPT`.
 
-Programs 01–70 take one optional binary-string argument. Programs 71–80 run built-in algorithm demonstrations without arguments. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string is supported as a command-line argument (`""`), and acceptance depends on the individual DFA.
+Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string is supported as a command-line argument (`""`), and acceptance depends on the individual DFA.
 
 Compile a single program without Make:
 
@@ -157,17 +158,33 @@ gcc -std=c11 -Wall -Wextra -Wpedantic programs/58_contains_00_and_11.c -o automa
 | 79 | [`79_dfa_enumerate_length_3.c`](programs/79_dfa_enumerate_length_3.c) | Enumerate accepted binary strings of length three |
 | 80 | [`80_dfa_distinguishable_pairs.c`](programs/80_dfa_distinguishable_pairs.c) | Table-filling distinguishability for DFA states |
 
+### Further automata algorithms (81–90)
+
+| # | Source | Demonstration |
+|---:|---|---|
+| 81 | [`81_dfa_transition_trace.c`](programs/81_dfa_transition_trace.c) | Trace transitions for input 1010 |
+| 82 | [`82_dfa_language_emptiness.c`](programs/82_dfa_language_emptiness.c) | Check emptiness using reachable accepting states |
+| 83 | [`83_dfa_universality.c`](programs/83_dfa_universality.c) | Check whether every binary string is accepted |
+| 84 | [`84_dfa_finite_language.c`](programs/84_dfa_finite_language.c) | Detect productive cycles to test language finiteness |
+| 85 | [`85_nfa_epsilon_closure_set.c`](programs/85_nfa_epsilon_closure_set.c) | Compute epsilon-closure of a chosen state set |
+| 86 | [`86_dfa_inclusion_counterexample.c`](programs/86_dfa_inclusion_counterexample.c) | Find counterexample to DFA language inclusion |
+| 87 | [`87_dfa_shortest_distinguishing_word.c`](programs/87_dfa_shortest_distinguishing_word.c) | Find shortest word distinguishing two DFAs |
+| 88 | [`88_nfa_bitset_simulation.c`](programs/88_nfa_bitset_simulation.c) | Simulate an NFA on 0101 using bit sets |
+| 89 | [`89_moore_machine.c`](programs/89_moore_machine.c) | Generate Moore machine outputs for 10110 |
+| 90 | [`90_mealy_machine.c`](programs/90_mealy_machine.c) | Generate Mealy machine outputs for 10110 |
+
 ## Project structure
 
 ```text
 Automata-C/
-├── programs/                   # 80 independent C source files
+├── programs/                   # 90 independent C source files
 ├── tests/
 │   ├── run_tests.py            # Tests for programs 01–20
 │   ├── test_programs_21_50.py  # Tests for programs 21–50
 │   └── test_programs_51_60.py  # Tests for programs 51–60
 │   ├── test_programs_61_70.py # Tests for programs 61–70
-│   └── test_programs_71_80.py # Tests for programs 71–80
+│   ├── test_programs_71_80.py # Tests for programs 71–80
+│   └── test_programs_81_90.py # Tests for programs 81–90
 ├── Makefile
 ├── README.md
 ├── README_30_NEW_PROGRAMS.md
@@ -186,7 +203,7 @@ python3 tests/test_programs_51_60.py
 make clean
 ```
 
-The extra Python scripts are separate test suites; **`make test` alone does not run all five**. No compiled executables are committed.
+The extra Python scripts are separate test suites; **`make test` alone does not run all six**. No compiled executables are committed.
 
 ## How the automata work
 
@@ -198,6 +215,7 @@ The recognizer programs define a transition table, a starting state, and a set o
 - [Programs 51–60](README_10_NEW_PROGRAMS.md)
 - [Programs 61–70](README_61_70.md)
 - [Programs 71–80](README_71_80.md)
+- [Programs 81–90](README_81_90.md)
 
 ## License
 

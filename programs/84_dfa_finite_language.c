@@ -1,0 +1,3 @@
+/* Program 84: Detect productive cycles to test language finiteness. Standalone educational example. */
+#include <stdio.h>
+int main(void){int t[4][2]={{1,2},{3,3},{2,2},{3,3}},f[4]={0,1,0,0},reach[4]={1},can[4]={0},stack[4]={0},done[4]={0},changed=1;while(changed){changed=0;for(int q=0;q<4;q++)if(reach[q])for(int b=0;b<2;b++){int z=t[q][b];if(!reach[z])reach[z]=changed=1;}}for(int q=0;q<4;q++)can[q]=f[q];changed=1;while(changed){changed=0;for(int q=0;q<4;q++)for(int b=0;b<2;b++)if(can[t[q][b]]&&!can[q])can[q]=changed=1;}int infinite=0;for(int q=0;q<4;q++)if(reach[q]&&can[q])for(int b=0;b<2;b++)if(t[q][b]==q&&can[q])infinite=1;puts(infinite?"INFINITE":"FINITE");return 0;}

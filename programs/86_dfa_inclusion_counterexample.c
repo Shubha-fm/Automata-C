@@ -1,0 +1,3 @@
+/* Program 86: Find counterexample to DFA language inclusion. Standalone educational example. */
+#include <stdio.h>
+int main(void){int a[2][2]={{0,1},{0,1}},b[2][2]={{1,0},{1,0}},fa[2]={0,1},fb[2]={1,0},q[4]={0},seen[4]={1},prev[4]={-1},symbol[4]={0},h=0,n=1,goal=-1;while(h<n){int p=q[h++],x=p/2,y=p%2;if(fa[x]&&!fb[y]){goal=p;break;}for(int bit=0;bit<2;bit++){int z=2*a[x][bit]+b[y][bit];if(!seen[z])seen[z]=1,q[n++]=z,prev[z]=p,symbol[z]=bit;}}if(goal<0)puts("INCLUDED");else{char w[5];int k=0;for(int v=goal;prev[v]!=-1;v=prev[v])w[k++]=(char)('0'+symbol[v]);printf("NOT INCLUDED: ");while(k)putchar(w[--k]);puts("");}return 0;}
