@@ -1,8 +1,8 @@
-# Automata-C: 100 Automata Programs in C
+# Automata-C: 110 Automata Programs in C
 
-A collection of **100 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–100 include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
+A collection of **110 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–100 include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
 
-> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–100 introduce pushdown-language recognizers, a fixed grammar example, regex-language recognition, and DFAs for other alphabets. These examples are educational; general-purpose automata construction and parsing libraries are not included.
+> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–110 include pushdown-language recognizers, fixed grammar and regular-language examples, and DFAs for other alphabets. Programs 101–110 include more string-language recognizers, including nonregular languages. These examples are educational; general-purpose automata construction and parsing libraries are not included.
 
 ## Requirements
 
@@ -24,11 +24,12 @@ python3 tests/test_programs_61_70.py
 python3 tests/test_programs_71_80.py
 python3 tests/test_programs_81_90.py
 python3 tests/test_programs_91_100.py
+python3 tests/test_programs_101_110.py
 ```
 
 Expected result for `./bin/03_ends_01 1101`: `ACCEPT`.
 
-Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Programs 91–100 accept a string argument, using the alphabet described for each program. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string can be supplied as a command-line argument (`""`), and acceptance depends on the individual language. The earlier recognizers use binary alphabets, whereas programs 91–100 use the alphabets specified in their descriptions.
+Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Programs 91–110 accept a string argument, using the alphabet described for each program. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string can be supplied as a command-line argument (`""`), and acceptance depends on the individual language. The earlier recognizers use binary alphabets, whereas programs 91–100 use the alphabets specified in their descriptions.
 
 Compile a single program without Make:
 
@@ -189,11 +190,26 @@ gcc -std=c11 -Wall -Wextra -Wpedantic programs/58_contains_00_and_11.c -o automa
 | 99 | [`99_dfa_identifier.c`](programs/99_dfa_identifier.c) | DFA for ASCII identifiers [A-Za-z_][A-Za-z0-9_]* |
 | 100 | [`100_dfa_binary_multiple_11.c`](programs/100_dfa_binary_multiple_11.c) | Binary-number DFA modulo 11 |
 
+### Further language recognition examples (101–110)
+
+| # | Source | Recognized language |
+|---:|---|---|
+| 101 | [`101_dyck_two_brackets.c`](programs/101_dyck_two_brackets.c) | Balanced () and [] with stack |
+| 102 | [`102_anbncn_counter.c`](programs/102_anbncn_counter.c) | Recognize a^n b^n c^n using counters |
+| 103 | [`103_cfg_palindrome.c`](programs/103_cfg_palindrome.c) | Recognize binary palindromes (CFG S->0S0|1S1|0|1|epsilon) |
+| 104 | [`104_regex_a_star_b_plus.c`](programs/104_regex_a_star_b_plus.c) | Recognize regular expression a*b+ |
+| 105 | [`105_dfa_binary_mod_13.c`](programs/105_dfa_binary_mod_13.c) | Binary-value DFA modulo 13 |
+| 106 | [`106_dfa_avoid_1011.c`](programs/106_dfa_avoid_1011.c) | Recognize binary strings avoiding 1011 |
+| 107 | [`107_nfa_ends_abb.c`](programs/107_nfa_ends_abb.c) | NFA bitset simulation for strings ending abb |
+| 108 | [`108_dfa_even_a_odd_b.c`](programs/108_dfa_even_a_odd_b.c) | Product DFA: even a and odd b counts |
+| 109 | [`109_pda_anb2n.c`](programs/109_pda_anb2n.c) | Stack-style recognition of a^n b^(2n) |
+| 110 | [`110_binary_no_000_or_111.c`](programs/110_binary_no_000_or_111.c) | DFA recognizer forbidding triple repeated bits |
+
 ## Project structure
 
 ```text
 Automata-C/
-├── programs/                   # 100 independent C source files
+├── programs/                   # 110 independent C source files
 ├── tests/
 │   ├── run_tests.py            # Tests for programs 01–20
 │   ├── test_programs_21_50.py  # Tests for programs 21–50
@@ -201,7 +217,8 @@ Automata-C/
 │   ├── test_programs_61_70.py # Tests for programs 61–70
 │   ├── test_programs_71_80.py # Tests for programs 71–80
 │   ├── test_programs_81_90.py # Tests for programs 81–90
-│   └── test_programs_91_100.py # Tests for programs 91–100
+│   ├── test_programs_91_100.py # Tests for programs 91–100
+│   └── test_programs_101_110.py # Tests for programs 101–110
 ├── Makefile
 ├── README.md
 ├── README_30_NEW_PROGRAMS.md
@@ -220,7 +237,7 @@ python3 tests/test_programs_51_60.py
 make clean
 ```
 
-The extra Python scripts are separate test suites; **`make test` alone does not run all seven**. No compiled executables are committed.
+The extra Python scripts are separate test suites; **`make test` alone does not run all eight**. No compiled executables are committed.
 
 ## How the automata work
 
@@ -234,6 +251,7 @@ The recognizer programs define a transition table, a starting state, and a set o
 - [Programs 71–80](README_71_80.md)
 - [Programs 81–90](README_81_90.md)
 - [Programs 91–100](README_91_100.md)
+- [Programs 101–110](README_101_110.md)
 
 ## License
 
