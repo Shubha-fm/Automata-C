@@ -1,6 +1,6 @@
-# Automata-C: 130 Automata Programs in C
+# Automata-C: 140 Automata Programs in C
 
-A collection of **130 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–100 include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
+A collection of **140 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–100 include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
 
 > **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–110 include pushdown-language recognizers, fixed grammar and regular-language examples, and DFAs for other alphabets. Programs 101–110 include more string-language recognizers, including nonregular languages. These examples are educational; general-purpose automata construction and parsing libraries are not included.
 
@@ -27,11 +27,12 @@ python3 tests/test_programs_91_100.py
 python3 tests/test_programs_101_110.py
 python3 tests/test_programs_111_120.py
 python3 tests/test_programs_121_130.py
+python3 tests/test_programs_131_140.py
 ```
 
 Expected result for `./bin/03_ends_01 1101`: `ACCEPT`.
 
-Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Programs 91–130 accept a string argument, using the alphabet described for each program. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string can be supplied as a command-line argument (`""`), and acceptance depends on the individual language. The earlier recognizers use binary alphabets, whereas programs 91–100 use the alphabets specified in their descriptions.
+Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Programs 91–140 accept a string argument, using the alphabet described for each program. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string can be supplied as a command-line argument (`""`), and acceptance depends on the individual language. The earlier recognizers use binary alphabets, whereas programs 91–100 use the alphabets specified in their descriptions.
 
 Compile a single program without Make:
 
@@ -237,11 +238,26 @@ gcc -std=c11 -Wall -Wextra -Wpedantic programs/58_contains_00_and_11.c -o automa
 | 129 | [`129_dfa_binary_mod_19.c`](programs/129_dfa_binary_mod_19.c) | Binary number divisible by 19 |
 | 130 | [`130_dfa_abc_ends_ab.c`](programs/130_dfa_abc_ends_ab.c) | Strings over a,b,c ending with ab |
 
+### Additional multi-alphabet DFA recognizers (131–140)
+
+| # | Source | Recognized language |
+|---:|---|---|
+| 131 | [`131_dfa_binary_mod_23.c`](programs/131_dfa_binary_mod_23.c) | Binary integer divisible by 23 |
+| 132 | [`132_dfa_decimal_mod_11.c`](programs/132_dfa_decimal_mod_11.c) | Decimal integer divisible by 11 |
+| 133 | [`133_dfa_contains_abc.c`](programs/133_dfa_contains_abc.c) | Strings over abc containing substring abc |
+| 134 | [`134_dfa_avoid_bb.c`](programs/134_dfa_avoid_bb.c) | Strings over ab without adjacent b |
+| 135 | [`135_dfa_exactly_three_a.c`](programs/135_dfa_exactly_three_a.c) | Strings over ab containing exactly three a |
+| 136 | [`136_dfa_a_count_mod_5.c`](programs/136_dfa_a_count_mod_5.c) | Strings over ab with a count divisible by five |
+| 137 | [`137_dfa_binary_length_mod_7.c`](programs/137_dfa_binary_length_mod_7.c) | Binary strings of length divisible by seven |
+| 138 | [`138_dfa_binary_has_exactly_one_11.c`](programs/138_dfa_binary_has_exactly_one_11.c) | Binary strings with exactly one overlapping occurrence of 11 |
+| 139 | [`139_dfa_ends_ab_or_ba.c`](programs/139_dfa_ends_ab_or_ba.c) | Strings over ab ending ab or ba |
+| 140 | [`140_dfa_even_a_odd_c.c`](programs/140_dfa_even_a_odd_c.c) | Strings over abc with even a count and odd c count |
+
 ## Project structure
 
 ```text
 Automata-C/
-├── programs/                   # 130 independent C source files
+├── programs/                   # 140 independent C source files
 ├── tests/
 │   ├── run_tests.py            # Tests for programs 01–20
 │   ├── test_programs_21_50.py  # Tests for programs 21–50
@@ -252,7 +268,8 @@ Automata-C/
 │   ├── test_programs_91_100.py # Tests for programs 91–100
 │   ├── test_programs_101_110.py # Tests for programs 101–110
 │   ├── test_programs_111_120.py # Tests for programs 111–120
-│   └── test_programs_121_130.py # Tests for programs 121–130
+│   ├── test_programs_121_130.py # Tests for programs 121–130
+│   └── test_programs_131_140.py # Tests for programs 131–140
 ├── Makefile
 ├── README.md
 ├── README_30_NEW_PROGRAMS.md
@@ -271,7 +288,7 @@ python3 tests/test_programs_51_60.py
 make clean
 ```
 
-The extra Python scripts are separate test suites; **`make test` alone does not run all ten**. No compiled executables are committed.
+The extra Python scripts are separate test suites; **`make test` alone does not run all eleven**. No compiled executables are committed.
 
 ## How the automata work
 
@@ -288,6 +305,7 @@ The recognizer programs define a transition table, a starting state, and a set o
 - [Programs 101–110](README_101_110.md)
 - [Programs 111–120](README_111_120.md)
 - [Programs 121–130](README_121_130.md)
+- [Programs 131–140](README_131_140.md)
 
 ## License
 
