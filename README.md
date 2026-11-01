@@ -1,8 +1,8 @@
-# Automata-C: 160 Automata Programs in C
+# Automata-C: 170 Automata Programs in C
 
-A collection of **160 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–150 also include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
+A collection of **170 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–150 also include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
 
-> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–110 include pushdown-language recognizers, fixed grammar and regular-language examples, and DFAs for other alphabets. Programs 101–110 include more string-language recognizers, including nonregular languages. Programs 151–160 add ε-NFA conversion, shortest-word searches, formal-language finiteness, and machine analysis. These examples are educational; general-purpose automata construction and parsing libraries are not included.
+> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–110 include pushdown-language recognizers, fixed grammar and regular-language examples, and DFAs for other alphabets. Programs 101–110 include more string-language recognizers, including nonregular languages. Programs 151–160 add ε-NFA conversion, shortest-word searches, formal-language finiteness, and machine analysis. Programs 161–170 cover regex compilation, DFA coverage, synchronization, strongly connected components, language quotients, reversal, and cross-checking. These examples are educational; general-purpose automata construction and parsing libraries are not included.
 
 ## Requirements
 
@@ -30,11 +30,12 @@ python3 tests/test_programs_121_130.py
 python3 tests/test_programs_131_140.py
 python3 tests/test_programs_141_150.py
 python3 tests/test_programs_151_160.py
+python3 tests/test_programs_161_170.py
 ```
 
 Expected result for `./bin/03_ends_01 1101`: `ACCEPT`.
 
-Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Programs 91–150 accept a string argument, using the alphabet described for each program. Programs 151, 156, 157 and 159 take command-line inputs; other programs in the 151–160 range analyze built-in machines. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string can be supplied as a command-line argument (`""`), and acceptance depends on the individual language. The earlier recognizers use binary alphabets, whereas programs 91–100 use the alphabets specified in their descriptions.
+Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Programs 91–150 accept a string argument, using the alphabet described for each program. Programs 151, 156, 157 and 159 take command-line inputs; other programs in the 151–160 range analyze built-in machines. See [programs 161–170](README_161_170.md) for their command-line interfaces. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string can be supplied as a command-line argument (`""`), and acceptance depends on the individual language. The earlier recognizers use binary alphabets, whereas programs 91–100 use the alphabets specified in their descriptions.
 
 Compile a single program without Make:
 
@@ -285,11 +286,26 @@ gcc -std=c11 -Wall -Wextra -Wpedantic programs/58_contains_00_and_11.c -o automa
 | 159 | [`159_right_linear_grammar_recognizer.c`](programs/159_right_linear_grammar_recognizer.c) | Right-linear grammar recognition via an equivalent NFA |
 | 160 | [`160_dfa_canonical_bfs_encoding.c`](programs/160_dfa_canonical_bfs_encoding.c) | Canonical reachable-state renumbering of a sample DFA |
 
+### Regex and automata algorithms (161–170)
+
+| # | C source | Description |
+|---:|---|---|
+| 161 | [`161_regex_postfix_thompson.c`](programs/161_regex_postfix_thompson.c) | Compile postfix regex to a Thompson ε-NFA and simulate it |
+| 162 | [`162_regex_infix_to_postfix.c`](programs/162_regex_infix_to_postfix.c) | Convert binary infix regex with implicit concatenation to postfix |
+| 163 | [`163_dfa_transition_cover.c`](programs/163_dfa_transition_cover.c) | Construct a shortest-prefix transition coverage suite using BFS |
+| 164 | [`164_dfa_shortest_reset_word.c`](programs/164_dfa_shortest_reset_word.c) | Find a shortest synchronizing word by subset BFS |
+| 165 | [`165_dfa_tarjan_scc.c`](programs/165_dfa_tarjan_scc.c) | Compute strongly connected components of a DFA using Tarjan's algorithm |
+| 166 | [`166_dfa_left_quotient.c`](programs/166_dfa_left_quotient.c) | Evaluate a left quotient of the ends-in-01 language |
+| 167 | [`167_dfa_right_quotient.c`](programs/167_dfa_right_quotient.c) | Compute DFA final states for right quotient by suffix 01 |
+| 168 | [`168_reversed_dfa_nfa.c`](programs/168_reversed_dfa_nfa.c) | Reverse all transitions of a DFA to recognize its reverse language |
+| 169 | [`169_dfa_state_pair_witnesses.c`](programs/169_dfa_state_pair_witnesses.c) | Find shortest distinguishing words for every DFA state pair |
+| 170 | [`170_nfa_dfa_exhaustive_crosscheck.c`](programs/170_nfa_dfa_exhaustive_crosscheck.c) | Exhaustively compare NFA and DFA recognition through length eight |
+
 ## Project structure
 
 ```text
 Automata-C/
-├── programs/                   # 160 independent C source files
+├── programs/                   # 170 independent C source files
 ├── tests/
 │   ├── run_tests.py            # Tests for programs 01–20
 │   ├── test_programs_21_50.py  # Tests for programs 21–50
@@ -303,7 +319,8 @@ Automata-C/
 │   ├── test_programs_121_130.py # Tests for programs 121–130
 │   ├── test_programs_131_140.py # Tests for programs 131–140
 │   ├── test_programs_141_150.py # Tests for programs 141–150
-│   └── test_programs_151_160.py # Tests for programs 151–160
+│   ├── test_programs_151_160.py # Tests for programs 151–160
+│   └── test_programs_161_170.py # Tests for programs 161–170
 ├── Makefile
 ├── README.md
 ├── README_30_NEW_PROGRAMS.md
@@ -320,6 +337,7 @@ make test        # Runs tests/run_tests.py for the original 20
 python3 tests/test_programs_21_50.py
 python3 tests/test_programs_51_60.py
 python3 tests/test_programs_151_160.py
+python3 tests/test_programs_161_170.py
 make clean
 ```
 
@@ -343,6 +361,7 @@ The recognizer programs define a transition table, a starting state, and a set o
 - [Programs 131–140](README_131_140.md)
 - [Programs 141–150](README_141_150.md)
 - [Programs 151–160](README_151_160.md)
+- [Programs 161–170](README_161_170.md)
 
 ## License
 
