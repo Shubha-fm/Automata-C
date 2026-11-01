@@ -1,8 +1,8 @@
-# Automata-C: 150 Automata Programs in C
+# Automata-C: 160 Automata Programs in C
 
-A collection of **150 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–100 include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
+A collection of **160 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–150 also include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
 
-> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–110 include pushdown-language recognizers, fixed grammar and regular-language examples, and DFAs for other alphabets. Programs 101–110 include more string-language recognizers, including nonregular languages. These examples are educational; general-purpose automata construction and parsing libraries are not included.
+> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–110 include pushdown-language recognizers, fixed grammar and regular-language examples, and DFAs for other alphabets. Programs 101–110 include more string-language recognizers, including nonregular languages. Programs 151–160 add ε-NFA conversion, shortest-word searches, formal-language finiteness, and machine analysis. These examples are educational; general-purpose automata construction and parsing libraries are not included.
 
 ## Requirements
 
@@ -29,11 +29,12 @@ python3 tests/test_programs_111_120.py
 python3 tests/test_programs_121_130.py
 python3 tests/test_programs_131_140.py
 python3 tests/test_programs_141_150.py
+python3 tests/test_programs_151_160.py
 ```
 
 Expected result for `./bin/03_ends_01 1101`: `ACCEPT`.
 
-Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Programs 91–150 accept a string argument, using the alphabet described for each program. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string can be supplied as a command-line argument (`""`), and acceptance depends on the individual language. The earlier recognizers use binary alphabets, whereas programs 91–100 use the alphabets specified in their descriptions.
+Programs 01–70 take one optional binary-string argument. Programs 71–90 run built-in algorithm demonstrations without arguments. Programs 91–150 accept a string argument, using the alphabet described for each program. Programs 151, 156, 157 and 159 take command-line inputs; other programs in the 151–160 range analyze built-in machines. Without an argument, it prompts for input on standard input. It prints `ACCEPT` or `REJECT` and returns exit code 2 on invalid symbols. The empty string can be supplied as a command-line argument (`""`), and acceptance depends on the individual language. The earlier recognizers use binary alphabets, whereas programs 91–100 use the alphabets specified in their descriptions.
 
 Compile a single program without Make:
 
@@ -269,11 +270,26 @@ gcc -std=c11 -Wall -Wextra -Wpedantic programs/58_contains_00_and_11.c -o automa
 | 149 | [`149_dfa_octal_mod_9.c`](programs/149_dfa_octal_mod_9.c) | Octal integer divisible by 9 |
 | 150 | [`150_dfa_hex_mod_11.c`](programs/150_dfa_hex_mod_11.c) | Hexadecimal integer divisible by 11 |
 
+### Construction, analysis and witness algorithms (151–160)
+
+| # | Source | Demonstration |
+|---:|---|---|
+| 151 | [`151_epsilon_nfa_cycle_simulator.c`](programs/151_epsilon_nfa_cycle_simulator.c) | Epsilon-NFA simulation with a cyclic epsilon closure |
+| 152 | [`152_epsilon_nfa_subset_construction.c`](programs/152_epsilon_nfa_subset_construction.c) | Reachable DFA subsets from an epsilon-NFA |
+| 153 | [`153_dfa_shortest_rejected_word.c`](programs/153_dfa_shortest_rejected_word.c) | Find the shortest rejected word using BFS |
+| 154 | [`154_dfa_shortest_access_words.c`](programs/154_dfa_shortest_access_words.c) | Shortest access words for every reachable DFA state |
+| 155 | [`155_dfa_finiteness_productive_cycle.c`](programs/155_dfa_finiteness_productive_cycle.c) | Decide language finiteness by finding productive cycles |
+| 156 | [`156_dfa_count_accepted_words.c`](programs/156_dfa_count_accepted_words.c) | Dynamic programming counts accepted words of a given length |
+| 157 | [`157_nfa_count_accepting_paths.c`](programs/157_nfa_count_accepting_paths.c) | Count accepting runs of a nondeterministic automaton |
+| 158 | [`158_mealy_equivalence_witness.c`](programs/158_mealy_equivalence_witness.c) | Find the shortest distinguishing word for two Mealy machines |
+| 159 | [`159_right_linear_grammar_recognizer.c`](programs/159_right_linear_grammar_recognizer.c) | Right-linear grammar recognition via an equivalent NFA |
+| 160 | [`160_dfa_canonical_bfs_encoding.c`](programs/160_dfa_canonical_bfs_encoding.c) | Canonical reachable-state renumbering of a sample DFA |
+
 ## Project structure
 
 ```text
 Automata-C/
-├── programs/                   # 150 independent C source files
+├── programs/                   # 160 independent C source files
 ├── tests/
 │   ├── run_tests.py            # Tests for programs 01–20
 │   ├── test_programs_21_50.py  # Tests for programs 21–50
@@ -286,7 +302,8 @@ Automata-C/
 │   ├── test_programs_111_120.py # Tests for programs 111–120
 │   ├── test_programs_121_130.py # Tests for programs 121–130
 │   ├── test_programs_131_140.py # Tests for programs 131–140
-│   └── test_programs_141_150.py # Tests for programs 141–150
+│   ├── test_programs_141_150.py # Tests for programs 141–150
+│   └── test_programs_151_160.py # Tests for programs 151–160
 ├── Makefile
 ├── README.md
 ├── README_30_NEW_PROGRAMS.md
@@ -302,10 +319,11 @@ make             # Compiles every programs/*.c file to bin/
 make test        # Runs tests/run_tests.py for the original 20
 python3 tests/test_programs_21_50.py
 python3 tests/test_programs_51_60.py
+python3 tests/test_programs_151_160.py
 make clean
 ```
 
-The extra Python scripts are separate test suites; **`make test` alone does not run all twelve**. No compiled executables are committed.
+The extra Python scripts are separate test suites; **`make test` alone does not run all test groups**. No compiled executables are committed.
 
 ## How the automata work
 
@@ -324,6 +342,7 @@ The recognizer programs define a transition table, a starting state, and a set o
 - [Programs 121–130](README_121_130.md)
 - [Programs 131–140](README_131_140.md)
 - [Programs 141–150](README_141_150.md)
+- [Programs 151–160](README_151_160.md)
 
 ## License
 
