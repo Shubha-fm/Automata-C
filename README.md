@@ -1,8 +1,8 @@
-# Automata-C: 180 Automata Programs in C
+# Automata-C: 190 Automata Programs in C
 
-A collection of **180 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–150 also include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
+A collection of **190 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–150 also include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
 
-> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–110 include pushdown-language recognizers, fixed grammar and regular-language examples, and DFAs for other alphabets. Programs 101–110 include more string-language recognizers, including nonregular languages. Programs 151–160 add ε-NFA conversion, shortest-word searches, formal-language finiteness, and machine analysis. Programs 161–170 cover regex compilation, DFA coverage, synchronization, strongly connected components, language quotients, reversal, and cross-checking. Programs 171–180 add configurable automata loaded from files, multi-pattern matching, DOT export, partition refinement, and Büchi nonemptiness. These examples are educational and not industrial-scale automata libraries. Programs 173–175 and 180 support user-provided machines with documented size limits.
+> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–110 include pushdown-language recognizers, fixed grammar and regular-language examples, and DFAs for other alphabets. Programs 101–110 include more string-language recognizers, including nonregular languages. Programs 151–160 add ε-NFA conversion, shortest-word searches, formal-language finiteness, and machine analysis. Programs 161–170 cover regex compilation, DFA coverage, synchronization, strongly connected components, language quotients, reversal, and cross-checking. Programs 171–180 extend the tooling with KMP/Aho-Corasick and automata verification. Programs 181–190 demonstrate weighted and probabilistic machines, Mealy transducers, approximate matching, timed guards, Büchi-cycle analysis, and DFA validation. Programs 171–180 add configurable automata loaded from files, multi-pattern matching, DOT export, partition refinement, and Büchi nonemptiness. These examples are educational and not industrial-scale automata libraries. Programs 173–175 and 180 support user-provided machines with documented size limits.
 
 ## Requirements
 
@@ -32,6 +32,7 @@ python3 tests/test_programs_141_150.py
 python3 tests/test_programs_151_160.py
 python3 tests/test_programs_161_170.py
 python3 tests/test_programs_171_180.py
+python3 tests/test_programs_181_190.py
 ```
 
 Expected result for `./bin/03_ends_01 1101`: `ACCEPT`.
@@ -317,11 +318,26 @@ gcc -std=c11 -Wall -Wextra -Wpedantic programs/58_contains_00_and_11.c -o automa
 | 179 | [`179_moore_partition_minimization.c`](programs/179_moore_partition_minimization.c) | Moore machine partition minimization |
 | 180 | [`180_dfa_equivalence_from_files.c`](programs/180_dfa_equivalence_from_files.c) | DFA equivalence from files with a shortest counterexample |
 
+### Weighted, probabilistic, transducer and validation programs (181–190)
+
+| # | Source | Function |
+|---:|---|---|
+| 181 | [`181_weighted_nfa_min_cost.c`](programs/181_weighted_nfa_min_cost.c) | Minimum accepting cost of a nondeterministic weighted finite automaton |
+| 182 | [`182_probabilistic_finite_automaton.c`](programs/182_probabilistic_finite_automaton.c) | Probabilistic finite automaton with acceptance threshold 0.5 |
+| 183 | [`183_mealy_binary_to_gray.c`](programs/183_mealy_binary_to_gray.c) | Mealy transducer converting binary digits into Gray code |
+| 184 | [`184_mealy_bit_stuffing.c`](programs/184_mealy_bit_stuffing.c) | Mealy-style bit stuffing: insert zero after five consecutive ones |
+| 185 | [`185_mealy_bit_unstuffing.c`](programs/185_mealy_bit_unstuffing.c) | Inverse of bit-stuffing transducer with malformed-input rejection |
+| 186 | [`186_levenshtein_automaton_distance_one.c`](programs/186_levenshtein_automaton_distance_one.c) | Threshold-one Levenshtein recognizer for binary words |
+| 187 | [`187_trie_keyword_dfa.c`](programs/187_trie_keyword_dfa.c) | Dynamically construct a trie DFA for six compiler keywords |
+| 188 | [`188_timed_automaton_guard.c`](programs/188_timed_automaton_guard.c) | Timed transition monitor: consecutive timestamps must be within ten units |
+| 189 | [`189_buchi_accepting_lasso.c`](programs/189_buchi_accepting_lasso.c) | Find a reachable Büchi accepting cycle and show a lasso witness |
+| 190 | [`190_dfa_transition_validator.c`](programs/190_dfa_transition_validator.c) | Validate a complete deterministic binary transition table from a text file |
+
 ## Project structure
 
 ```text
 Automata-C/
-├── programs/                   # 180 independent C source files
+├── programs/                   # 190 independent C source files
 ├── tests/
 │   ├── run_tests.py            # Tests for programs 01–20
 │   ├── test_programs_21_50.py  # Tests for programs 21–50
@@ -337,7 +353,8 @@ Automata-C/
 │   ├── test_programs_141_150.py # Tests for programs 141–150
 │   ├── test_programs_151_160.py # Tests for programs 151–160
 │   ├── test_programs_161_170.py # Tests for programs 161–170
-│   └── test_programs_171_180.py # Tests for programs 171–180
+│   ├── test_programs_171_180.py # Tests for programs 171–180
+│   └── test_programs_181_190.py # Tests for programs 181–190
 ├── Makefile
 ├── README.md
 ├── README_30_NEW_PROGRAMS.md
@@ -381,6 +398,7 @@ The recognizer programs define a transition table, a starting state, and a set o
 - [Programs 151–160](README_151_160.md)
 - [Programs 161–170](README_161_170.md)
 - [Programs 171–180](README_171_180.md)
+- [Programs 181–190](README_181_190.md)
 
 ## License
 
