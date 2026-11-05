@@ -27,7 +27,7 @@ for length in range(0,8):
 assert_output("201_dfa_accepted_word_rank",["111"],"REJECT")
 assert_output("201_dfa_accepted_word_rank",["01x"],"Binary alphabet only",2)
 
-assert_output("202_dfa_transition_monoid",[],"MONOID_SIZE=")
+assert_output("202_dfa_transition_monoid",[],"MONOID_SIZE=5")
 for n,answer in [(0,0.0),(1,0.0),(2,0.25),(3,0.25),(8,0.25)]:
     assert_output("203_dfa_iid_accept_probability",[n],f"P_ACCEPT={answer:.6f}")
 assert_output("203_dfa_iid_accept_probability",["abc"],"Invalid length",2)
