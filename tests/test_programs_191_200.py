@@ -40,7 +40,8 @@ for n in range(0,7):
 test("198_mealy_transducer_composition",["012"],"Binary only",2)
 test("199_cfg_cyk_membership",["baaba"],"ACCEPT")
 test("199_cfg_cyk_membership",["bbbbb"],"REJECT")
-test("199_cfg_cyk_membership",["aaa"],"REJECT")
+test("199_cfg_cyk_membership",["aaa"],"ACCEPT")
+test("199_cfg_cyk_membership",["aaaa"],"REJECT")
 test("199_cfg_cyk_membership",["abc"],"Alphabet is",2)
 test("200_dfa_reachability_productivity_audit",[],
      "REACHABLE=4 PRODUCTIVE=3 DEAD=1 UNREACHABLE=2")
