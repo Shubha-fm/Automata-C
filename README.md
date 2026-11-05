@@ -1,8 +1,8 @@
-# Automata-C: 190 Automata Programs in C
+# Automata-C: 200 Automata Programs in C
 
-A collection of **190 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–150 also include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
+A collection of **200 standalone C11 programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–150 also include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
 
-> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–110 include pushdown-language recognizers, fixed grammar and regular-language examples, and DFAs for other alphabets. Programs 101–110 include more string-language recognizers, including nonregular languages. Programs 151–160 add ε-NFA conversion, shortest-word searches, formal-language finiteness, and machine analysis. Programs 161–170 cover regex compilation, DFA coverage, synchronization, strongly connected components, language quotients, reversal, and cross-checking. Programs 171–180 extend the tooling with KMP/Aho-Corasick and automata verification. Programs 181–190 demonstrate weighted and probabilistic machines, Mealy transducers, approximate matching, timed guards, Büchi-cycle analysis, and DFA validation. Programs 171–180 add configurable automata loaded from files, multi-pattern matching, DOT export, partition refinement, and Büchi nonemptiness. These examples are educational and not industrial-scale automata libraries. Programs 173–175 and 180 support user-provided machines with documented size limits.
+> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–110 include pushdown-language recognizers, fixed grammar and regular-language examples, and DFAs for other alphabets. Programs 101–110 include more string-language recognizers, including nonregular languages. Programs 151–160 add ε-NFA conversion, shortest-word searches, formal-language finiteness, and machine analysis. Programs 161–170 cover regex compilation, DFA coverage, synchronization, strongly connected components, language quotients, reversal, and cross-checking. Programs 171–180 extend the tooling with KMP/Aho-Corasick and automata verification. Programs 181–190 demonstrate weighted and probabilistic machines, Mealy transducers, approximate matching, timed guards, Büchi-cycle analysis, and DFA validation. Programs 191–200 cover Hopcroft refinement, exact language equivalence, combinatorial counting, generalized Büchi acceptance, Mealy composition, and CYK parsing. Programs 171–180 add configurable automata loaded from files, multi-pattern matching, DOT export, partition refinement, and Büchi nonemptiness. These examples are educational and not industrial-scale automata libraries. Programs 173–175 and 180 support user-provided machines with documented size limits.
 
 ## Requirements
 
@@ -333,11 +333,26 @@ gcc -std=c11 -Wall -Wextra -Wpedantic programs/58_contains_00_and_11.c -o automa
 | 189 | [`189_buchi_accepting_lasso.c`](programs/189_buchi_accepting_lasso.c) | Find a reachable Büchi accepting cycle and show a lasso witness |
 | 190 | [`190_dfa_transition_validator.c`](programs/190_dfa_transition_validator.c) | Validate a complete deterministic binary transition table from a text file |
 
+### Algorithms and verification examples (191–200)
+
+| # | Source | Demonstration |
+|---:|---|---|
+| 191 | [`191_hopcroft_dfa_minimization.c`](programs/191_hopcroft_dfa_minimization.c) | Hopcroft partition refinement of a six-state DFA |
+| 192 | [`192_dfa_matrix_word_count.c`](programs/192_dfa_matrix_word_count.c) | Count accepted binary words using matrix exponentiation |
+| 193 | [`193_nfa_dfa_exact_equivalence.c`](programs/193_nfa_dfa_exact_equivalence.c) | On-the-fly exact equivalence of an NFA and a DFA, with witness |
+| 194 | [`194_nfa_shortest_accepted_word.c`](programs/194_nfa_shortest_accepted_word.c) | Breadth-first subset search for the shortest NFA-accepted word |
+| 195 | [`195_dfa_lexicographic_unranking.c`](programs/195_dfa_lexicographic_unranking.c) | Find the kth lexicographic word accepted by a parity DFA |
+| 196 | [`196_nfa_ambiguity_witness.c`](programs/196_nfa_ambiguity_witness.c) | Find the shortest word with multiple accepting NFA runs |
+| 197 | [`197_generalized_buchi_scc.c`](programs/197_generalized_buchi_scc.c) | Check two-set generalized Büchi acceptance using SCCs |
+| 198 | [`198_mealy_transducer_composition.c`](programs/198_mealy_transducer_composition.c) | Compose bit-complement and binary-to-Gray Mealy transducers |
+| 199 | [`199_cfg_cyk_membership.c`](programs/199_cfg_cyk_membership.c) | CYK membership for a nontrivial fixed Chomsky-normal-form grammar |
+| 200 | [`200_dfa_reachability_productivity_audit.c`](programs/200_dfa_reachability_productivity_audit.c) | Audit reachable, productive, dead, and unreachable DFA states |
+
 ## Project structure
 
 ```text
 Automata-C/
-├── programs/                   # 190 independent C source files
+├── programs/                   # 200 independent C source files
 ├── tests/
 │   ├── run_tests.py            # Tests for programs 01–20
 │   ├── test_programs_21_50.py  # Tests for programs 21–50
@@ -354,7 +369,8 @@ Automata-C/
 │   ├── test_programs_151_160.py # Tests for programs 151–160
 │   ├── test_programs_161_170.py # Tests for programs 161–170
 │   ├── test_programs_171_180.py # Tests for programs 171–180
-│   └── test_programs_181_190.py # Tests for programs 181–190
+│   ├── test_programs_181_190.py # Tests for programs 181–190
+│   └── test_programs_191_200.py # Tests for programs 191–200
 ├── Makefile
 ├── README.md
 ├── README_30_NEW_PROGRAMS.md
@@ -373,6 +389,8 @@ python3 tests/test_programs_51_60.py
 python3 tests/test_programs_151_160.py
 python3 tests/test_programs_161_170.py
 python3 tests/test_programs_171_180.py
+python3 tests/test_programs_181_190.py
+python3 tests/test_programs_191_200.py
 make clean
 ```
 
@@ -399,6 +417,7 @@ The recognizer programs define a transition table, a starting state, and a set o
 - [Programs 161–170](README_161_170.md)
 - [Programs 171–180](README_171_180.md)
 - [Programs 181–190](README_181_190.md)
+- [Programs 191–200](README_191_200.md)
 
 ## License
 
