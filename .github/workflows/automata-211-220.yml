@@ -1,0 +1,21 @@
+name: Automata C programs 211-220
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'programs/21[1-9]_*.c'
+      - 'programs/220_*.c'
+      - 'tests/test_programs_211_220.py'
+      - 'Makefile'
+      - '.github/workflows/automata-211-220.yml'
+  workflow_dispatch:
+
+jobs:
+  compile-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Compile and run regression checks
+        run: make test-211-220 CC=gcc CFLAGS='-std=c11 -O2 -Wall -Wextra -Wpedantic -Werror'
