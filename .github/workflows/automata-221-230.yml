@@ -1,0 +1,21 @@
+name: Automata C programs 221-230
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'programs/22[1-9]_*.c'
+      - 'programs/230_*.c'
+      - 'tests/test_programs_221_230.py'
+      - 'Makefile'
+      - '.github/workflows/automata-221-230.yml'
+  workflow_dispatch:
+
+jobs:
+  compile-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Compile and run regression checks
+        run: make test-221-230 CC=gcc CFLAGS='-std=c11 -O2 -Wall -Wextra -Wpedantic -Werror'

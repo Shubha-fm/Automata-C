@@ -3,7 +3,7 @@ CFLAGS ?= -std=c11 -Wall -Wextra -Wpedantic -O2
 SOURCES := $(wildcard programs/*.c)
 TARGETS := $(patsubst programs/%.c,bin/%,$(SOURCES))
 
-.PHONY: test-211-220 test-201-210 test-191-200 test-181-190 all test-171-180 test test-new test-161-170 clean
+.PHONY: test-221-230 test-211-220 test-201-210 test-191-200 test-181-190 all test-171-180 test test-new test-161-170 clean
 all: $(TARGETS)
 bin/%: programs/%.c
 	@mkdir -p bin
@@ -24,5 +24,7 @@ test-201-210: $(patsubst programs/%.c,bin/%,$(wildcard programs/20[1-9]_*.c prog
 	python3 tests/test_programs_201_210.py
 test-211-220: $(patsubst programs/%.c,bin/%,$(wildcard programs/21[1-9]_*.c programs/220_*.c))
 	python3 tests/test_programs_211_220.py
+test-221-230: $(patsubst programs/%.c,bin/%,$(wildcard programs/22[1-9]_*.c programs/230_*.c))
+	python3 tests/test_programs_221_230.py
 clean:
 	rm -rf bin
