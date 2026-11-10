@@ -122,13 +122,56 @@ with tempfile.TemporaryDirectory() as folder:
     dot=run("250_dfa_file_graphviz",ends01,expected="digraph DFA {")
     assert 'q1 -> q2 [label="1"];' in dot
     assert 'q2 [shape=doublecircle];' in dot
-    for n in range(241,251):
-        run(next(p.name[len(str(n))+1:-2] for p in BIN.glob(f"{n}_*.x") if False),
-            []) if False else None
     for name in ("242_dfa_file_shortest_word","243_dfa_file_word_count",
                  "244_dfa_file_scc_audit","245_dfa_file_complement",
                  "247_dfa_file_reachable_trim","248_dfa_file_minimize",
                  "249_dfa_file_state_pair_witnesses","250_dfa_file_graphviz"):
         args=[invalid,2] if name=="243_dfa_file_word_count" else [invalid]
         run(name,*args,expected="Invalid DFA file",rc=2)
+
+    # Independently check equivalence and minimality on 30 seeded random DFAs.
+    from random import Random
+    rng=Random(241250)
+    for case in range(30):
+        n=rng.randrange(1,8)
+        start=rng.randrange(n)
+        finals=[rng.randrange(2) for _ in range(n)]
+        jumps=[[rng.randrange(n),rng.randrange(n)] for _ in range(n)]
+        original=(f"{n} {start}\n"+" ".join(map(str,finals))+"\n"+
+                  "".join(f"{a} {b}\n" for a,b in jumps))
+        source=save(f"random_{case}.dfa",original)
+        minimized=run("248_dfa_file_minimize",source)
+        output_n,output_start,output_finals,output_jumps=parse(minimized)
+        # Independent table-filling distinguishability algorithm.
+        reachable={start}
+        pending=[start]
+        while pending:
+            q=pending.pop()
+            for z in jumps[q]:
+                if z not in reachable:
+                    reachable.add(z)
+                    pending.append(z)
+        distinct=[[finals[i]!=finals[j] for j in range(n)] for i in range(n)]
+        changed=True
+        while changed:
+            changed=False
+            for q in reachable:
+                for r in reachable:
+                    if distinct[q][r]:
+                        continue
+                    if any(distinct[jumps[q][b]][jumps[r][b]] for b in (0,1)):
+                        distinct[q][r]=distinct[r][q]=True
+                        changed=True
+        representatives=[]
+        for q in sorted(reachable):
+            if not any(not distinct[q][r] for r in representatives):
+                representatives.append(q)
+        assert output_n==len(representatives),(case,n,output_n,len(representatives),minimized)
+        for length in range(8):
+            for bits in product("01",repeat=length):
+                word="".join(bits)
+                assert accepts(original,word)==accepts(minimized,word),(
+                    case,word,original,minimized
+                )
+                checks+=1
 print(f"{checks} regression checks passed")
