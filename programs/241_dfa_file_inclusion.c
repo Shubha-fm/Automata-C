@@ -20,5 +20,5 @@ int main(int argc,char**argv){
  char word[MAXPAIRS+1];int n=0;
  for(int p=goal;parent[p]>=0;p=parent[p])word[n++]=(char)('0'+edge[p]);
  printf("NOT_INCLUDED WITNESS=");if(!n)printf("<epsilon>");
- while(n)putchar(word[--n]);putchar('\n');return 0;
+ while(n){putchar(word[--n]);}\nputchar('\n');return 0;
 }

@@ -16,5 +16,5 @@ int main(int argc,char**argv){
  char word[DFA_MAX+1];int n=0;
  for(int q=goal;parent[q]>=0;q=parent[q])word[n++]=(char)('0'+edge[q]);
  printf("SHORTEST=");if(!n)printf("<epsilon>");
- while(n)putchar(word[--n]);putchar('\n');return 0;
+ while(n){putchar(word[--n]);}\nputchar('\n');return 0;
 }

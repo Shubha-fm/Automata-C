@@ -20,7 +20,7 @@ static void witness(int a,int b){
  char word[PAIRS+1];int n=0;
  for(int p=goal;parent[p]>=0;p=parent[p])word[n++]=(char)('0'+edge[p]);
  if(!n)printf("<epsilon>");
- while(n)putchar(word[--n]);putchar('\n');
+ while(n){putchar(word[--n]);}\nputchar('\n');
 }
 int main(int argc,char**argv){
  if(argc!=2){fprintf(stderr,"Usage: %s MODEL.dfa\n",argv[0]);return 2;}
