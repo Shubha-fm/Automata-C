@@ -30,7 +30,7 @@ test-231-240: $(patsubst programs/%.c,bin/%,$(wildcard programs/23[1-9]_*.c prog
 	python3 tests/test_programs_231_240.py
 test-241-250: $(patsubst programs/%.c,bin/%,$(wildcard programs/24[1-9]_*.c programs/250_*.c))
 	python3 tests/test_programs_241_250.py
-test-251-260: $(patsubst programs/%.c,bin/%,$(wildcard programs/25[1-9]_*.c programs/260_*.c))
+test-251-260: $(patsubst programs/%.c,bin/%,$(wildcard programs/25[1-9]_*.c programs/260_*.c)) bin/243_dfa_file_word_count
 	python3 tests/test_programs_251_260.py
 clean:
 	rm -rf bin
