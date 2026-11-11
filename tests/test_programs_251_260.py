@@ -182,7 +182,7 @@ with tempfile.TemporaryDirectory() as tmp:
         fields=prefix.split()
         state=int(fields[0][1:])
         bit=int(fields[1][2])
-        target=int(fields[3][1:])
+        target=int(fields[2][1:])
         assert target==transitions[state][bit]
         assert word.endswith(str(bit))
         q=0
