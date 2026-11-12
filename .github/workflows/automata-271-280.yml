@@ -1,0 +1,22 @@
+name: Automata C programs 271-280
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'programs/27[1-9]_*.c'
+      - 'programs/280_*.c'
+      - 'include/dfa_io.h'
+      - 'tests/test_programs_271_280.py'
+      - 'Makefile'
+      - '.github/workflows/automata-271-280.yml'
+  workflow_dispatch:
+
+jobs:
+  compile-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Compile and run regression checks
+        run: make test-271-280 CC=gcc CFLAGS='-std=c11 -O2 -Wall -Wextra -Wpedantic -Werror'
