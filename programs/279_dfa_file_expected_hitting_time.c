@@ -23,7 +23,7 @@ int main(int argc,char**argv){
  double a[DFA_MAX][DFA_MAX+1]={{0}};
  for(int q=0;q<d.n;q++){
   a[q][q]=1;
-  if(!d.final[q]){
+  if(reach[q]&&!d.final[q]){
    a[q][d.go[q][0]]-=0.5;a[q][d.go[q][1]]-=0.5;
    a[q][d.n]=1;
   }
