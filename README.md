@@ -1,8 +1,8 @@
-# Automata-C: 290 Automata Programs in C
+# Automata-C: 300 Automata Programs in C
 
-A collection of **290 C11 command-line programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–150 also include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
+A collection of **300 C11 command-line programs** covering deterministic and nondeterministic finite automata, regular languages, fixed automata algorithms, and selected pushdown-language and grammar examples. Most examples use the binary alphabet **{0, 1}**, while programs 91–150 also include other alphabets. Suitable for Theory of Computation, automata theory, and introductory compiler-design exercises.
 
-> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–110 include pushdown-language recognizers, fixed grammar and regular-language examples, and DFAs for other alphabets. Programs 101–110 include more string-language recognizers, including nonregular languages. Programs 151–160 add ε-NFA conversion, shortest-word searches, formal-language finiteness, and machine analysis. Programs 161–170 cover regex compilation, DFA coverage, synchronization, strongly connected components, language quotients, reversal, and cross-checking. Programs 171–180 extend the tooling with KMP/Aho-Corasick and automata verification. Programs 181–190 demonstrate weighted and probabilistic machines, Mealy transducers, approximate matching, timed guards, Büchi-cycle analysis, and DFA validation. Programs 191–200 cover Hopcroft refinement, exact language equivalence, combinatorial counting, generalized Büchi acceptance, Mealy composition, and CYK parsing. Programs 201–210 introduce accepted-word ranking, transition monoids, probabilistic acceptance, inverse homomorphisms, regex derivatives, Büchi word evaluation, parse-tree reconstruction, and sink-state completion. Programs 211–220 add pumping witnesses, NFA distinct-word counting, weighted path reconstruction, exact ambiguity analysis, Earley parsing, grammar-to-NFA construction, epsilon elimination, and finite-language cardinality. Programs 221–230 cover mutation-test generation, universality and intersection witnesses, Moore equivalence, FIRST/FOLLOW analysis, LL(1) parsing, ambiguous parse counting, epsilon-NFA shortest words, shuffle languages, and file-based DFA equivalence. Programs 231–240 introduce DFA conformance suites, bounded NFA comparison, weighted shortest words, nullable/unit closure, LL(1) table construction, probabilistic state tracking, bounded PDA BFS, finite-trace property monitoring, unique NFA word enumeration, and generalized Büchi lasso witnesses. Programs 241–250 add file-based DFA inclusion, shortest-word and counting analyses, SCC audits, complement, intersection, reachable-state trimming, minimization, distinguishing words, and DOT export. Programs 251–260 extend those file-based tools with universality, finiteness, synchronization, rank/unrank, reversal, symmetric difference, access words, coverage, enumeration, and inverse homomorphisms. Programs 261–270 add DFA union and difference, word quotients, prefix and suffix closures, prefix-freeness witnesses, accepted-length spectra, and left/right ideal constructions. The file-based programs 241–290 share `include/dfa_io.h`. Programs 271–280 add factor, subsequence, supersequence, concatenation and Kleene-star constructions, access diameter, unary and accepted-length periodicity, expected hitting time, and uniform sampling of accepted words. Programs 281–290 add biased acceptance and hitting probabilities, expected accepted-prefix counts, transition-monoid and aperiodicity analysis, rooted isomorphism, input-symbol swapping, regular-language left/right quotients, and bounded-length language filtering. Programs 171–180 add configurable automata loaded from files, multi-pattern matching, DOT export, partition refinement, and Büchi nonemptiness. These examples are educational and not industrial-scale automata libraries. Programs 173–175 and 180 support user-provided machines with documented size limits.
+> **Scope:** Programs 01–60 are DFAs. Programs 61–62 demonstrate NFA and ε-NFA simulation. Programs 63–70 demonstrate language operations and further regular-language recognizers. Programs 71–90 demonstrate fixed-size automata algorithms and machines with output. Programs 91–110 include pushdown-language recognizers, fixed grammar and regular-language examples, and DFAs for other alphabets. Programs 101–110 include more string-language recognizers, including nonregular languages. Programs 151–160 add ε-NFA conversion, shortest-word searches, formal-language finiteness, and machine analysis. Programs 161–170 cover regex compilation, DFA coverage, synchronization, strongly connected components, language quotients, reversal, and cross-checking. Programs 171–180 extend the tooling with KMP/Aho-Corasick and automata verification. Programs 181–190 demonstrate weighted and probabilistic machines, Mealy transducers, approximate matching, timed guards, Büchi-cycle analysis, and DFA validation. Programs 191–200 cover Hopcroft refinement, exact language equivalence, combinatorial counting, generalized Büchi acceptance, Mealy composition, and CYK parsing. Programs 201–210 introduce accepted-word ranking, transition monoids, probabilistic acceptance, inverse homomorphisms, regex derivatives, Büchi word evaluation, parse-tree reconstruction, and sink-state completion. Programs 211–220 add pumping witnesses, NFA distinct-word counting, weighted path reconstruction, exact ambiguity analysis, Earley parsing, grammar-to-NFA construction, epsilon elimination, and finite-language cardinality. Programs 221–230 cover mutation-test generation, universality and intersection witnesses, Moore equivalence, FIRST/FOLLOW analysis, LL(1) parsing, ambiguous parse counting, epsilon-NFA shortest words, shuffle languages, and file-based DFA equivalence. Programs 231–240 introduce DFA conformance suites, bounded NFA comparison, weighted shortest words, nullable/unit closure, LL(1) table construction, probabilistic state tracking, bounded PDA BFS, finite-trace property monitoring, unique NFA word enumeration, and generalized Büchi lasso witnesses. Programs 241–250 add file-based DFA inclusion, shortest-word and counting analyses, SCC audits, complement, intersection, reachable-state trimming, minimization, distinguishing words, and DOT export. Programs 251–260 extend those file-based tools with universality, finiteness, synchronization, rank/unrank, reversal, symmetric difference, access words, coverage, enumeration, and inverse homomorphisms. Programs 261–270 add DFA union and difference, word quotients, prefix and suffix closures, prefix-freeness witnesses, accepted-length spectra, and left/right ideal constructions. The file-based programs 241–300 share `include/dfa_io.h`. Programs 271–280 add factor, subsequence, supersequence, concatenation and Kleene-star constructions, access diameter, unary and accepted-length periodicity, expected hitting time, and uniform sampling of accepted words. Programs 281–290 add biased acceptance and hitting probabilities, expected accepted-prefix counts, transition-monoid and aperiodicity analysis, rooted isomorphism, input-symbol swapping, regular-language left/right quotients, and bounded-length language filtering. Programs 291–300 add DFA execution traces, shortest accepted extensions, coverage metrics, Levenshtein/Hamming distance, substring avoidance, safety and Büchi lasso witnesses, batch monitoring, and residual-language equivalence classes. Programs 171–180 add configurable automata loaded from files, multi-pattern matching, DOT export, partition refinement, and Büchi nonemptiness. These examples are educational and not industrial-scale automata libraries. Programs 173–175 and 180 support user-provided machines with documented size limits.
 
 ## Requirements
 
@@ -483,11 +483,26 @@ gcc -std=c11 -Wall -Wextra -Wpedantic programs/58_contains_00_and_11.c -o automa
 | 289 | [`289_dfa_file_left_quotient_regular.c`](programs/289_dfa_file_left_quotient_regular.c) | Left quotient of a DFA language by another regular language |
 | 290 | [`290_dfa_file_bounded_length_filter.c`](programs/290_dfa_file_bounded_length_filter.c) | Filter a DFA language to lengths at most or exactly K |
 
+### Automata testing, edit distance, and model checking (291–300)
+
+| # | C source | Description |
+|---:|---|---|
+| 291 | [`291_dfa_file_execution_trace.c`](programs/291_dfa_file_execution_trace.c) | Execute a DFA word and print the visited-state trace |
+| 292 | [`292_dfa_file_shortest_extension.c`](programs/292_dfa_file_shortest_extension.c) | Shortest accepted extension of an input prefix |
+| 293 | [`293_dfa_file_word_coverage.c`](programs/293_dfa_file_word_coverage.c) | Visited-state and transition coverage for a word |
+| 294 | [`294_dfa_file_levenshtein_distance.c`](programs/294_dfa_file_levenshtein_distance.c) | Exact insertion/deletion/substitution distance to a regular language |
+| 295 | [`295_dfa_file_nearest_hamming.c`](programs/295_dfa_file_nearest_hamming.c) | Nearest same-length accepted word with lexicographic tie-breaking |
+| 296 | [`296_dfa_file_avoid_pattern.c`](programs/296_dfa_file_avoid_pattern.c) | Construct DFA intersection with a substring-avoidance constraint |
+| 297 | [`297_dfa_file_safety_lasso.c`](programs/297_dfa_file_safety_lasso.c) | Shortest violation of universal safety with an infinite lasso |
+| 298 | [`298_dfa_file_batch_monitor.c`](programs/298_dfa_file_batch_monitor.c) | Evaluate a file of binary traces and summarize verdicts |
+| 299 | [`299_dfa_file_buchi_lasso.c`](programs/299_dfa_file_buchi_lasso.c) | Find a reachable accepting cycle and a Büchi lasso witness |
+| 300 | [`300_dfa_file_residual_classes.c`](programs/300_dfa_file_residual_classes.c) | Compute Myhill-Nerode residual classes of reachable states |
+
 ## Project structure
 
 ```text
 Automata-C/
-├── programs/                   # 290 independent C source files
+├── programs/                   # 300 independent C source files
 ├── tests/
 │   ├── run_tests.py            # Tests for programs 01–20
 │   ├── test_programs_21_50.py  # Tests for programs 21–50
@@ -514,7 +529,8 @@ Automata-C/
 │   ├── test_programs_251_260.py # Tests for programs 251–260
 │   ├── test_programs_261_270.py # Tests for programs 261–270
 │   ├── test_programs_271_280.py # Tests for programs 271–280
-│   └── test_programs_281_290.py # Tests for programs 281–290
+│   ├── test_programs_281_290.py # Tests for programs 281–290
+│   └── test_programs_291_300.py # Tests for programs 291–300
 ├── Makefile
 ├── README.md
 ├── README_30_NEW_PROGRAMS.md
@@ -544,6 +560,7 @@ python3 tests/test_programs_251_260.py
 python3 tests/test_programs_261_270.py
 python3 tests/test_programs_271_280.py
 python3 tests/test_programs_281_290.py
+python3 tests/test_programs_291_300.py
 make clean
 ```
 
@@ -580,6 +597,7 @@ The recognizer programs define a transition table, a starting state, and a set o
 - [Programs 261–270](README_261_270.md)
 - [Programs 271–280](README_271_280.md)
 - [Programs 281–290](README_281_290.md)
+- [Programs 291–300](README_291_300.md)
 
 ## License
 
