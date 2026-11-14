@@ -22,11 +22,11 @@ int main(int argc,char**argv){
  printf("SAFETY_FAIL WITNESS=");
  if(!n)printf("<epsilon>");
  while(n){putchar(word[--n]);}
- int first[DFA_MAX],states[DFA_MAX+1];
+ int first[DFA_MAX];
  for(int q=0;q<d.n;q++)first[q]=-1;
  int q=goal,length=0;
  while(first[q]<0){
-  first[q]=length;states[length++]=q;q=d.go[q][0];
+  first[q]=length++;q=d.go[q][0];
  }
  int prefix=first[q],period=length-prefix;
  printf(" TAIL_ZEROS=%d LOOP_ZEROS=%d\n",prefix,period);
